@@ -10,8 +10,8 @@
             <b-navbar-nav class="text-right ml-auto mr-5">
               <b-nav-item v-on:click="login">Login</b-nav-item>
               <b-nav-item v-on:click="registro">Registro</b-nav-item>
-              <b-nav-item v-if="is_auth" v-on:click="documentos">Documentos</b-nav-item>
-              <b-nav-item v-if="is_auth">Cerrar Sesion</b-nav-item>
+              <b-nav-item  v-on:click="documentos">Documentos</b-nav-item>
+              <b-nav-item >Cerrar Sesion</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
