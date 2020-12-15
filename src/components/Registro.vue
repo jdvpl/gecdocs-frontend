@@ -1,10 +1,10 @@
 <template>
+<div class="text-center">
  <b-jumbotron
           header="Regístrate">
           <div class="m-auto container w-50">
             <div class="col-sm-12 mt-4">
-
-     <b-form class="w-100 m-auto">
+        <b-form class="w-100 m-auto">
         <label class="sr-only" for="inline-form-input-username"
             >Nombre</label
           >
@@ -49,8 +49,8 @@
             </div>
           </div>
         </b-jumbotron>
+        </div>
 </template>
-
 <script>
 export default {
   name: "Registro"

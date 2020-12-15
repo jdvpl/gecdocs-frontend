@@ -80,9 +80,8 @@
                 class="list-group-item list-group-item-action"
                 aria-current="true"
               >
-                Soat
+                Soat-25-03-2020
               </a>
-              <b-datepicker></b-datepicker>
               <a href="#" class="list-group-item list-group-item-action"
                 >Dapibus ac facilisis in</a
               >
@@ -94,7 +93,7 @@
         </div>
       </div>
          <div class="col-md-4">
-        <div class="card text-white bg-info mb-3">
+        <div class="card text-white naranja mb-3">
           <div class="card-header">Documentos a Vencer en 15 dias</div>
           <div class="card-body">
             <div class="list-group">
@@ -150,3 +149,9 @@ export default {
   name: "Documento",
 };
 </script>
+
+<style>
+.naranja{
+  background-color: orange !important;
+}
+</style>
