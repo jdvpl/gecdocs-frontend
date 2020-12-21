@@ -58,7 +58,7 @@ export default {
     },
 
     logIn: function(usuario){
-
+      this.$router.push({name: "login"})
       localStorage.setItem('usuario', usuario)
       localStorage.setItem('isAuth', true)
       this.updateAuth()
@@ -79,11 +79,11 @@ export default {
       
     },
       registro: function(){
-      if(this.$route.name != "registro"){
+        this.$router.push({name: "registro"})
+        
         let usuario = localStorage.setItem("usuario")
         localStorage.setItem('isAuth', true)
-        this.$router.push({name: "registro"})
-      }
+      
       
     },
 

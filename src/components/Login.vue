@@ -5,7 +5,7 @@
           <div class="m-auto container w-50">
             <div class="col-sm-12 mt-4">
 
-          <form class="w-100 m-auto" v-on:submit.prevent="processAuthUser">
+          <b-form class="w-100 m-auto" v-on:submit.prevent="processAuthUser">
           <label class="sr-only" for="inline-form-input-username"
             >Correo</label>
           <b-input-group prepend="✉" class="mb-2 mr-sm-2 mb-sm-0">
@@ -27,7 +27,7 @@
             ></b-form-input>
           </b-input-group><br>
           <b-button variant="dark" class="btn btn-block" type="submit">Iniciar Sesión</b-button>
-        </form>
+        </b-form>
         </div>
           </div>
         </b-jumbotron>
@@ -42,30 +42,32 @@ import Footer from './Footer.vue'
 export default {
   components: { Footer },
   name: "Login",
-data: function() {
-    return {
-      email: "",
-      password: "",
-    };
-    console.log(password)
-  },
-  methods: {
-    agregarregistro: function() {
-      var datosJson = {
-        email: this.email,
-        name: this.name,
-        password: this.password
-      };
-      axios
-        .post("http://127.0.0.1:8000/registrar-usuario/", datosJson)
-        .then(response => {
-          alert(response.data.msg);
-        })
-        .catch(err => {
-          console.log(err);
-          alert("error en el servidor");
-        });
+
+ data: function(){
+        return {
+            user_in: {
+                usuario:"",
+                password:""
+            }
+        }
+    },
+    methods: {
+        processAuthUser: function(){
+            var self = this
+            axios.post("http://127.0.0.1:8000/login-usuario/", self.user_in,  {headers: {}})
+                .then((result) => {
+                    alert("Autenticación Exitosa");
+                    self.$emit('log-in', self.user_in.usuario)
+                })
+                .catch((error) => {
+                    
+                    if (error.response.status == "404")
+                        alert("ERROR 404: Usuario no encontrado.");
+                    
+                    if (error.response.status == "403")
+                        alert("ERROR 403: Contraseña Erronea.");  
+                });
+        }
     }
-  }
-};
+}
 </script>

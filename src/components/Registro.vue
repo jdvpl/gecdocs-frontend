@@ -11,7 +11,9 @@
           <b-input-group prepend="👤" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="text"
+
             v-model="name" 
+
             required
               id="inline-form-input-username"
               placeholder="Pepita Perez"
@@ -25,7 +27,9 @@
             <b-form-input
             type="email"
             required
+
             v-model="email" 
+
               id="inline-form-input-username"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
@@ -43,7 +47,9 @@
            <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
+
             v-model="confirmar" 
+
               id="inline-form-input-username"
               placeholder="Confrimar Contraseña"
               required
@@ -62,6 +68,7 @@ export default {
   name: "Registro",
 data: function() {
     return {
+      name:"",
       email: "",
       password: "",
     };
@@ -70,11 +77,12 @@ data: function() {
   methods: {
     agregarregistro: function() {
       var datosJson = {
+        name:this.name,
         email: this.email,
         password: this.password
       };
       axios
-        .post("http://127.0.0.1:8000/login-usuario/", datosJson)
+        .post("http://127.0.0.1:8000/registrar-usuario/", datosJson)
         .then(response => {
           alert(response.data.msg);
         })
