@@ -4,6 +4,7 @@
           header="Regístrate">
           <div class="m-auto container w-50">
             <div class="col-sm-12 mt-4">
+              
         <b-form class="w-100 m-auto">
         <label class="sr-only" for="inline-form-input-username"
             >Nombre</label
@@ -41,7 +42,7 @@
             v-model="password" 
               id="inline-form-input-username"
               placeholder="Contraseña"
-              required
+              require
             ></b-form-input>
           </b-input-group><br>
            <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">

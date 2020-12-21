@@ -1,6 +1,6 @@
 <template>
     <div id="usuario">
-        <h2>Hola  <span> {{usuario}}, </span>  ¡Bienvenido!</h2>
+        <h2>Hola  <span> {{email}}, </span>  ¡Bienvenido!</h2>
     </div>
 </template>
 
@@ -9,12 +9,12 @@
         name: "Usuario",
         data:function(){
             return {
-                usuario: "none"
+                email: "none"
             }
         },
 
         created: function(){
-            this.usuario = this.$route.params.usuario
+            this.email = this.$route.params.email
         }
     }
 </script>

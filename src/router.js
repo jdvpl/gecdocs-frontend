@@ -23,7 +23,7 @@ const router = new vueRouter({
                 component: Login
             },
             {
-                path: '/usuario/:usuario',
+                path: '/usuario/:email',
                 name: "usuario",
                 component: Usuario
             },
@@ -34,7 +34,7 @@ const router = new vueRouter({
                 component: Registro
             },
             {
-                path: '/documentos/:usuario',
+                path: '/documentos/:email',
                 name: "documento",
                 component: Documento
             },

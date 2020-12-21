@@ -9,7 +9,7 @@
           <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav class="text-center ml-auto mr-5">
               
-              <b-nav-item v-on:click="login">Login</b-nav-item>
+              <b-nav-item v-on:click="init">Login</b-nav-item>
               <b-nav-item v-on:click="registro">Registro</b-nav-item>
               <b-nav-item v-if="isAuth">Hola {{usuario}}</b-nav-item>
               <b-nav-item  v-on:click="documentos" v-if="isAuth">Documentos</b-nav-item>
@@ -52,14 +52,15 @@ export default {
         self.$router.push({name: "login"})
 
       else{
-        let usuario = localStorage.getItem("usuario")
-        self.$router.push({name: "usuario", params:{ usuario: usuario }})
+        let email = localStorage.getItem("email")
+        self.$router.push({name: "usuario", params:{ email: email }})
       }  
     },
 
     logIn: function(usuario){
       this.$router.push({name: "login"})
-      localStorage.setItem('usuario', usuario)
+      
+      localStorage.setItem('email', email)
       localStorage.setItem('isAuth', true)
       this.updateAuth()
       
@@ -67,21 +68,20 @@ export default {
 
     logOut: function(){
       localStorage.removeItem('isAuth')
-      localStorage.removeItem('usuario')
+      localStorage.removeItem('email')
       this.updateAuth()
     },
 
     init: function(){
-      if(this.$route.name != "usuario"){
-        let usuario = localStorage.getItem("usuario")
-        this.$router.push({name: "usuario", params:{ usuario: usuario }})
+      if(this.$route.name != "login"){
+        this.$router.push({name: "login"})        
       }
       
     },
       registro: function(){
         this.$router.push({name: "registro"})
         
-        let usuario = localStorage.setItem("usuario")
+        let email = localStorage.setItem("email")
         localStorage.setItem('isAuth', true)
       
       
@@ -89,8 +89,8 @@ export default {
 
     documentos: function(){
       if(this.$route.name != "documento"){
-        let usuario = localStorage.getItem("usuario")
-        this.$router.push({name: "documento", params:{ usuario: usuario }})
+        let email = localStorage.getItem("email")
+        this.$router.push({name: "documento", params:{ email: email }})
       }
     },
     
