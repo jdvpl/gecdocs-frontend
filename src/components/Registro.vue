@@ -11,11 +11,13 @@
           <b-input-group prepend="👤" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="text"
+            v-model="name" 
             required
               id="inline-form-input-username"
               placeholder="Pepita Perez"
             ></b-form-input>
           </b-input-group><br>
+
           <label class="sr-only" for="inline-form-input-username"
             >Correo</label
           >
@@ -23,6 +25,7 @@
             <b-form-input
             type="email"
             required
+            v-model="email" 
               id="inline-form-input-username"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
@@ -31,6 +34,7 @@
           <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
+            v-model="password" 
               id="inline-form-input-username"
               placeholder="Contraseña"
               required
@@ -39,12 +43,13 @@
            <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
+            v-model="confirmar" 
               id="inline-form-input-username"
               placeholder="Confrimar Contraseña"
               required
             ></b-form-input>
           </b-input-group><br>
-          <b-button variant="dark" class="btn btn-block">Guardar</b-button>
+          <b-button variant="dark"  v-on:click="agregarregistro" class="btn btn-block">Guardar</b-button>
         </b-form>
             </div>
           </div>
@@ -52,7 +57,32 @@
         </div>
 </template>
 <script>
+import axios from "axios";
 export default {
-  name: "Registro"
-}
+  name: "Registro",
+data: function() {
+    return {
+      email: "",
+      password: "",
+    };
+    console.log(password)
+  },
+  methods: {
+    agregarregistro: function() {
+      var datosJson = {
+        email: this.email,
+        password: this.password
+      };
+      axios
+        .post("http://127.0.0.1:8000/login-usuario/", datosJson)
+        .then(response => {
+          alert(response.data.msg);
+        })
+        .catch(err => {
+          console.log(err);
+          alert("error en el servidor");
+        });
+    }
+  }
+};
 </script>
