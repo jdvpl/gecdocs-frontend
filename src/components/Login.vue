@@ -57,7 +57,7 @@ data: function() {
         password: this.password
       };
       axios
-        .post("http://127.0.0.1:8000/login-usuario/", datosJson)
+        .post("https://gestion-documental.herokuapp.com/login-usuario/", datosJson)
         .then(response => {
           alert(response.data.msg);
         })

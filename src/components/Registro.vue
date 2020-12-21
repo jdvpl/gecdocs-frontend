@@ -4,7 +4,7 @@
           header="Regístrate">
           <div class="m-auto container w-50">
             <div class="col-sm-12 mt-4">
-              
+
         <b-form class="w-100 m-auto">
         <label class="sr-only" for="inline-form-input-username"
             >Nombre</label
@@ -83,7 +83,7 @@ data: function() {
         password: this.password
       };
       axios
-        .post("http://127.0.0.1:8000/registrar-usuario/", datosJson)
+        .post("https://gestion-documental.herokuapp.com/registrar-usuario/", datosJson)
         .then(response => {
           alert(response.data.msg);
         })
