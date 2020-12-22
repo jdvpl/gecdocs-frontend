@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios';
   export default {
       name:'Tabla',
     data() {
@@ -37,12 +38,21 @@
           }
         ],
         items: [
-          { isActive: true, name_doc: 'Soat', frenov:'2020-1-19',fvenc:'2021-1-19',falarm:'2024-1-10' },
-          { isActive: true, name_doc: 'Comida', frenov:'2020-1-19',fvenc:'2021-1-19',falarm:'2024-1-10' },
-          { isActive: true, name_doc: 'Salud', frenov:'2020-1-19',fvenc:'2021-1-19',falarm:'2024-1-10' },
+          {  },
           
         ]
       }
+    },
+  mounted: function(){
+        this.email = this.$route.params.email
+
+        let self = this
+
+        axios.get("http://127.0.0.1:8000/documentos-usuario/?email=" + this.email).then((result) => {
+            self.items = result.data.documentosPn
+            console.log(items)
+        })
+
     }
-  }
+}
 </script>

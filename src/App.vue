@@ -8,12 +8,12 @@
             >GesDocs</b-navbar-brand>
           <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav class="text-center ml-auto mr-5">
-              
-              <b-nav-item v-on:click="init">Login</b-nav-item>
-              <b-nav-item v-on:click="registro">Registro</b-nav-item>
-              <b-nav-item v-if="isAuth">Hola {{usuario}}</b-nav-item>
-              <b-nav-item  v-on:click="documentos" v-if="isAuth">Documentos</b-nav-item>
-              <b-nav-item v-if="isAuth">Cerrar Sesion</b-nav-item>
+              <b-nav-item  v-if="is_auth"><usuario/></b-nav-item>
+              <b-nav-item v-on:click="init" v-if="!is_auth">Login</b-nav-item>
+              <b-nav-item v-on:click="registro"  v-if="!is_auth">Registro</b-nav-item>
+              <b-nav-item  v-on:click="documentos" v-if="is_auth">Documentos</b-nav-item>
+              <b-nav-item  v-on:click="Nuevo" v-if="is_auth">Nuevo Documento</b-nav-item>
+              <b-nav-item v-if="is_auth" v-on:click="logOut" >Cerrar Sesion</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
@@ -30,6 +30,7 @@
 
 
 import vueRouter from 'vue-router'
+import Usuario from './components/Usuario.vue'
 
 export default {
   name: 'App',
@@ -40,14 +41,15 @@ export default {
       
       }    
   },
-
   components: {
+    Usuario
   },
 
   methods:{
     updateAuth: function(){
       var self = this
       self.is_auth  = localStorage.getItem('isAuth') || false
+
       if(self.is_auth == false)
         self.$router.push({name: "login"})
 
@@ -57,9 +59,8 @@ export default {
       }  
     },
 
-    logIn: function(usuario){
+    logIn: function(email){
       this.$router.push({name: "login"})
-      
       localStorage.setItem('email', email)
       localStorage.setItem('isAuth', true)
       this.updateAuth()
@@ -80,9 +81,9 @@ export default {
     },
       registro: function(){
         this.$router.push({name: "registro"})
-        
-        let email = localStorage.setItem("email")
-        localStorage.setItem('isAuth', true)
+       localStorage.setItem('email', email)
+      localStorage.setItem('isAuth', true)
+      this.updateAuth()
       
       
     },
@@ -91,6 +92,12 @@ export default {
       if(this.$route.name != "documento"){
         let email = localStorage.getItem("email")
         this.$router.push({name: "documento", params:{ email: email }})
+      }
+    },
+       Nuevo: function(){
+      if(this.$route.name != "nuevo"){
+        let email = localStorage.getItem("email")
+        this.$router.push({name: "nuevo", params:{ email: email }})
       }
     },
     

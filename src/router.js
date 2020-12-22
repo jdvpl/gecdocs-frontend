@@ -5,7 +5,7 @@ import App from './App'
 import Registro from './components/Registro.vue'
 import Login from './components/Login.vue'
 import Documento from './components/Documentos.vue'
-import Usuario from './components/Usuario.vue'
+import NuevoDocuemento from './components/NuevoDocumento.vue'
 
 
 const router = new vueRouter({
@@ -25,7 +25,7 @@ const router = new vueRouter({
             {
                 path: '/usuario/:email',
                 name: "usuario",
-                component: Usuario
+                component: Documento
             },
             ,
             {
@@ -37,6 +37,11 @@ const router = new vueRouter({
                 path: '/documentos/:email',
                 name: "documento",
                 component: Documento
+            },
+            {
+                path: '/nuevo-documento',
+                name: "nuevo",
+                component: NuevoDocuemento
             },
 
 

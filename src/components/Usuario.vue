@@ -1,7 +1,5 @@
 <template>
-    <div id="usuario">
-        <h2>Hola  <span> {{email}}, </span>  ¡Bienvenido!</h2>
-    </div>
+        <p>Hola  <span> {{email}} </span></p>
 </template>
 
 <script>
@@ -12,7 +10,6 @@
                 email: "none"
             }
         },
-
         created: function(){
             this.email = this.$route.params.email
         }

@@ -5,7 +5,7 @@
           <div class="m-auto container w-50">
             <div class="col-sm-12 mt-4">
 
-        <b-form class="w-100 m-auto">
+        <b-form class="w-100 m-auto" v-on:submit.prevent="processAuthUserRegistro">
         <label class="sr-only" for="inline-form-input-username"
             >Nombre</label
           >
@@ -13,7 +13,7 @@
             <b-form-input
             type="text"
 
-            v-model="name" 
+             v-model="user_in.name"
 
             required
               id="inline-form-input-username"
@@ -29,7 +29,7 @@
             type="email"
             required
 
-            v-model="email" 
+            v-model="user_in.email"
 
               id="inline-form-input-username"
               placeholder="jdvpl@gmail.com"
@@ -39,7 +39,7 @@
           <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
-            v-model="password" 
+            v-model="user_in.password"
               id="inline-form-input-username"
               placeholder="Contraseña"
               require
@@ -48,15 +48,13 @@
            <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
-
-            v-model="confirmar" 
-
+              v-model="user_in.confirmar"
               id="inline-form-input-username"
               placeholder="Confrimar Contraseña"
               required
             ></b-form-input>
           </b-input-group><br>
-          <b-button variant="dark"  v-on:click="agregarregistro" class="btn btn-block">Guardar</b-button>
+          <b-button variant="dark" type="submit" class="btn btn-block">Registrame</b-button>
         </b-form>
             </div>
           </div>
@@ -69,28 +67,34 @@ export default {
   name: "Registro",
 data: function() {
     return {
+      user_in:{
       name:"",
       email: "",
       password: "",
+      confirmar:"",
+      }
     };
-    console.log(password)
   },
   methods: {
-    agregarregistro: function() {
-      var datosJson = {
-        name:this.name,
-        email: this.email,
-        password: this.password
-      };
-      axios
-        .post("https://gestion-documental.herokuapp.com/registrar-usuario/", datosJson)
+    processAuthUserRegistro: function(){
+      
+      if(this.user_in.confirmar==this.user_in.password){
+            var self = this
+      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
+      axios.post("http://127.0.0.1:8000/registrar-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
+          self.$emit('log-in', self.user_in.email)
         })
         .catch(err => {
           console.log(err);
-          alert("error en el servidor");
+          alert("Error en el servidor");
         });
+      }else{
+         alert("Las contraseñas no coinciden");
+      }
+      
+      
     }
   }
 };

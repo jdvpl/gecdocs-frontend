@@ -12,7 +12,7 @@
             <b-form-input
             type="email"
             required
-            v-model="email" 
+            v-model="user_in.email"
               id="inline-form-input-username"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
@@ -20,13 +20,13 @@
           <b-input-group prepend="🗝" class="mb-2 mr-sm-2 mb-sm-0">
             <b-form-input
             type="password"
-            v-model="password"
+            v-model="user_in.password"
               id="inline-form-input-username"
               placeholder="Contraseña"
               required
             ></b-form-input>
           </b-input-group><br>
-          <b-button variant="dark" class="btn btn-block" v-on:click="agregarregistro" type="submit">Iniciar Sesión</b-button>
+          <b-button variant="dark" class="btn btn-block" type="submit">Iniciar Sesión</b-button>
         </b-form>
         </div>
           </div>
@@ -45,21 +45,20 @@ export default {
 
 data: function() {
     return {
+      user_in:{
       email: "",
       password: "",
+      }
     };
-    console.log(password)
   },
   methods: {
-    agregarregistro: function() {
-      var datosJson = {
-        email: this.email,
-        password: this.password
-      };
-      axios
-        .post("https://gestion-documental.herokuapp.com/login-usuario/", datosJson)
+    processAuthUser: function(){
+      var self = this
+      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
+      axios.post("http://127.0.0.1:8000/login-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
+          self.$emit('log-in', self.user_in.email)
         })
         .catch(err => {
           console.log(err);
