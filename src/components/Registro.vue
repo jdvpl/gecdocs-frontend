@@ -28,9 +28,7 @@
             <b-form-input
             type="email"
             required
-
             v-model="user_in.email"
-
               id="inline-form-input-username"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
@@ -81,7 +79,7 @@ data: function() {
       if(this.user_in.confirmar==this.user_in.password){
             var self = this
       //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
-      axios.post("http://127.0.0.1:8000/registrar-usuario/", self.user_in,{headers: {}})
+      axios.post("http://gestion-documental.herokuapp.com/registrar-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
           self.$emit('log-in', self.user_in.email)

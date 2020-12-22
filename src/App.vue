@@ -5,7 +5,7 @@
         <b-navbar toggleable="sm"  type="dark" variant="dark">
           <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
           <b-navbar-brand class="font-weight-bold ml-5 pl-5"
-            >GesDocs</b-navbar-brand>
+            >GesDocs {{f}}</b-navbar-brand>
           <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav class="text-center ml-auto mr-5">
               <b-nav-item  v-if="is_auth"><usuario/></b-nav-item>
@@ -89,6 +89,7 @@ export default {
     },
 
     documentos: function(){
+
       if(this.$route.name != "documento"){
         let email = localStorage.getItem("email")
         this.$router.push({name: "documento", params:{ email: email }})
@@ -104,6 +105,7 @@ export default {
   },
 
   created: function(){
+    
     this.$router.push({name: "root"})
     this.updateAuth()
   }

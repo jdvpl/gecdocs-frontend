@@ -45,11 +45,9 @@ import axios from 'axios';
     },
   mounted: function(){
         this.email = this.$route.params.email
-
         let self = this
-
-        axios.get("http://127.0.0.1:8000/documentos-usuario/?email=" + this.email).then((result) => {
-            self.items = result.data.documentosPn
+        axios.get("http://gestion-documental.herokuapp.com/documentos-usuario/?email=" + this.email).then((result) => {
+            this.items = result.data.documentosPn
             console.log(items)
         })
 

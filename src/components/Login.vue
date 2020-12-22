@@ -55,7 +55,7 @@ data: function() {
     processAuthUser: function(){
       var self = this
       //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
-      axios.post("http://127.0.0.1:8000/login-usuario/", self.user_in,{headers: {}})
+      axios.post("http://gestion-documental.herokuapp.com/login-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
           self.$emit('log-in', self.user_in.email)

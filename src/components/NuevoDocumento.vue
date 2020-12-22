@@ -1,7 +1,7 @@
 <template>
 <div class="mt-5 container">
 
-  <b-form class="w-100 m-auto">
+  <b-form class="w-100 m-auto" v-on:submit.prevent="agregarDocumento">
         <label class="sr" for="inline-form-input-username"
             >Nombre</label
           >
@@ -58,7 +58,7 @@
           </b-input-group><br>
 
           
-          <b-button variant="dark" type="sumit" v-on:click="agregarDocumento" class="btn btn-block">Guardar</b-button>
+          <b-button variant="dark" type="sumit" class="btn btn-block">Guardar</b-button>
         </b-form>
         </div>
 </template>
@@ -93,7 +93,7 @@ data: function() {
       };
       axios
      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
-        .post("http://127.0.0.1:8000/crear-documento/", datosJson)
+        .post("http://gestion-documental.herokuapp.com/crear-documento/", datosJson)
         .then(response => {
           alert(response.data.msg);
         })
