@@ -2,10 +2,10 @@
 <div class="text-center">
  <b-jumbotron
           header="Regístrate">
-          <div class="m-auto container w-50">
-            <div class="col-sm-12 mt-4">
+          <div class="m-auto container col-md-6">
+            <div class="col-sm-12 mt-4 ">
 
-        <b-form class="w-100 m-auto" v-on:submit.prevent="processAuthUserRegistro">
+        <b-form class="m-auto" v-on:submit.prevent="processAuthUserRegistro">
         <label class="sr-only" for="inline-form-input-username"
             >Nombre</label
           >

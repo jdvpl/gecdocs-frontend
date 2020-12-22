@@ -2,7 +2,7 @@
 <div class="text-center">
   <b-jumbotron
           header="Iniciar Sesión">
-          <div class="m-auto container w-50">
+          <div class="m-auto container col-md-6">
             <div class="col-sm-12 mt-4">
 
           <b-form class="w-100 m-auto" v-on:submit.prevent="processAuthUser">
