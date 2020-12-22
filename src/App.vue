@@ -5,7 +5,7 @@
         <b-navbar toggleable="sm"  type="dark" variant="dark">
           <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
           <b-navbar-brand class="font-weight-bold ml-5 pl-5"
-            >GesDocs {{f}}</b-navbar-brand>
+            >GesDocs</b-navbar-brand>
           <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav class="text-center ml-auto mr-5">
               <b-nav-item  v-if="is_auth"><usuario/></b-nav-item>
@@ -80,11 +80,12 @@ export default {
       
     },
       registro: function(){
-        this.$router.push({name: "registro"})
-       localStorage.setItem('email', email)
+        if(this.$route.name != "registro"){
+      this.$router.push({name: "registro"})
+      localStorage.setItem('email', email)
       localStorage.setItem('isAuth', true)
       this.updateAuth()
-      
+        }
       
     },
 

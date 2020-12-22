@@ -13,7 +13,7 @@
             type="email"
             required
             v-model="user_in.email"
-              id="inline-form-input-username"
+              id="inline-form-input-email"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
           </b-input-group><br>
@@ -21,7 +21,7 @@
             <b-form-input
             type="password"
             v-model="user_in.password"
-              id="inline-form-input-username"
+            autocomplete
               placeholder="Contraseña"
               required
             ></b-form-input>
@@ -54,7 +54,8 @@ data: function() {
   methods: {
     processAuthUser: function(){
       var self = this
-      axios.post("http://gestion-documental.herokuapp.com/login-usuario/", self.user_in,{headers: {}})
+      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
+      axios.post("https://gestion-documental.herokuapp.com/login-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
           self.$emit('log-in', self.user_in.email)

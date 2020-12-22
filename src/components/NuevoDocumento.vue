@@ -79,7 +79,7 @@ data: function() {
     
   }
   ,
-   created: function(){
+   beforeCreate: function(){
         this.email = this.$route.params.email
     },
   methods: {

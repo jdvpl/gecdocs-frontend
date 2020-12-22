@@ -34,7 +34,7 @@
                 Cras justo odio
               </a>
               <a href="#" class="list-group-item list-group-item-action"
-                >Dapibus ac facilisis in</a
+                >Soat</a
               >
             
             </div>
@@ -53,7 +53,7 @@
                 aria-current="true"
                 
               >
-              <p v-if="dato.frenov==hoy">{{dato.name_doc}}</p>
+              <p v-if="dato.frenov<=hoy">{{dato.name_doc}}</p>
                
               </a>
               
@@ -83,7 +83,7 @@ export default {
         this.email = this.$route.params.email
 
         let self = this
-        axios.get("http://gestion-documental.herokuapp.com/documentos-usuario/?email=" + this.email).then((result) => {
+        axios.get("https://gestion-documental.herokuapp.com/documentos-usuario/?email=" + this.email).then((result) => {
             const resulta=result.data.documentosPn
             console.log(resulta)
             this.datos=resulta

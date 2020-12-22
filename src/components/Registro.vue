@@ -16,7 +16,7 @@
              v-model="user_in.name"
 
             required
-              id="inline-form-input-username"
+              id="inline-form-input-name"
               placeholder="Pepita Perez"
             ></b-form-input>
           </b-input-group><br>
@@ -29,7 +29,7 @@
             type="email"
             required
             v-model="user_in.email"
-              id="inline-form-input-username"
+              id="inline-form-input-email"
               placeholder="jdvpl@gmail.com"
             ></b-form-input>
           </b-input-group><br>
@@ -38,7 +38,7 @@
             <b-form-input
             type="password"
             v-model="user_in.password"
-              id="inline-form-input-username"
+              id="inline-form-input-pass1"
               placeholder="Contraseña"
               require
             ></b-form-input>
@@ -47,7 +47,7 @@
             <b-form-input
             type="password"
               v-model="user_in.confirmar"
-              id="inline-form-input-username"
+              id="inline-form-input-pass"
               placeholder="Confrimar Contraseña"
               required
             ></b-form-input>
@@ -78,7 +78,7 @@ data: function() {
       
       if(this.user_in.confirmar==this.user_in.password){
             var self = this
-      axios.post("http://gestion-documental.herokuapp.com/registrar-usuario/", self.user_in,{headers: {}})
+      axios.post("https://gestion-documental.herokuapp.com/registrar-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);
           self.$emit('log-in', self.user_in.email)
@@ -90,8 +90,6 @@ data: function() {
       }else{
          alert("Las contraseñas no coinciden");
       }
-      
-      
     }
   }
 };
