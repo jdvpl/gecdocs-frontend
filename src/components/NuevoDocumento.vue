@@ -92,7 +92,6 @@ data: function() {
         email: this.email,
       };
       axios
-     //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
         .post("http://gestion-documental.herokuapp.com/crear-documento/", datosJson)
         .then(response => {
           alert(response.data.msg);

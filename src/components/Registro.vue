@@ -78,7 +78,6 @@ data: function() {
       
       if(this.user_in.confirmar==this.user_in.password){
             var self = this
-      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
       axios.post("http://gestion-documental.herokuapp.com/registrar-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);

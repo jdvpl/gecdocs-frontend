@@ -54,7 +54,6 @@ data: function() {
   methods: {
     processAuthUser: function(){
       var self = this
-      //? recordar cambiar al servidor en la nueve https://gestion-documental.herokuapp.com
       axios.post("http://gestion-documental.herokuapp.com/login-usuario/", self.user_in,{headers: {}})
         .then(response => {
           alert(response.data.msg);

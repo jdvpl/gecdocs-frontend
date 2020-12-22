@@ -83,7 +83,6 @@ export default {
         this.email = this.$route.params.email
 
         let self = this
-
         axios.get("http://gestion-documental.herokuapp.com/documentos-usuario/?email=" + this.email).then((result) => {
             const resulta=result.data.documentosPn
             console.log(resulta)
