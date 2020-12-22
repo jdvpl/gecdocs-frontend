@@ -92,7 +92,7 @@ data: function() {
         email: this.email,
       };
       axios
-        .post("http://gestion-documental.herokuapp.com/crear-documento/", datosJson)
+        .post("https://gestion-documental.herokuapp.com/crear-documento/", datosJson)
         .then(response => {
           alert(response.data.msg);
         })
