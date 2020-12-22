@@ -46,7 +46,7 @@
           <div class="card-header">Documentos a Vencer en 30 dias</div>
           <div class="card-body">
            
-            <div class="list-group" v-for="dato in datos">
+            <!-- <div class="list-group" v-for="dato in datos">
               <a
                 href="!#"
                 class="list-group-item list-group-item-action"
@@ -58,7 +58,7 @@
               </a>
               
               
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
