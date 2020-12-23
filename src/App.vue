@@ -83,7 +83,7 @@ export default {
         if(this.$route.name != "registro"){
       this.$router.push({name: "registro"})
       localStorage.setItem('email', email)
-      localStorage.setItem('isAuth', true)
+      localStorage.setItem('isAuth',false)
       this.updateAuth()
         }
       

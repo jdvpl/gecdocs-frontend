@@ -21,7 +21,7 @@
             <b-form-input
             type="password"
             v-model="user_in.password"
-            autocomplete
+            autocomplete="off"
               placeholder="Contraseña"
               required
             ></b-form-input>

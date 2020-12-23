@@ -40,6 +40,7 @@
             v-model="user_in.password"
               id="inline-form-input-pass1"
               placeholder="Contraseña"
+              autocomplete="on"
               require
             ></b-form-input>
           </b-input-group><br>
@@ -49,6 +50,7 @@
               v-model="user_in.confirmar"
               id="inline-form-input-pass"
               placeholder="Confrimar Contraseña"
+              autocomplete="on"
               required
             ></b-form-input>
           </b-input-group><br>

@@ -40,7 +40,8 @@ import axios from 'axios';
         items: [
           {  },
           
-        ]
+        ],
+        
       }
     },
   mounted: function(){
@@ -49,6 +50,7 @@ import axios from 'axios';
         // https://gestion-documental.herokuapp.com/
         axios.get("https://gestion-documental.herokuapp.com/documentos-usuario/?email=" + this.email).then((result) => {
             this.items = result.data.documentosPn
+            this.usuario=result.data
         })
     }
 }
